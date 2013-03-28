@@ -34,9 +34,21 @@
 EJ_BIND_GET(App, ctx) {
 	if(!uiApp) {
 		uiApp = [[MJSUIApp alloc] initWithContext:ctx argc:0 argv:NULL];
+		[MJSUIApp createJSObjectWithContext:ctx controller:controller instance:uiApp];
+		JSValueProtect(ctx, uiApp.jsObject);
 	}
 	
-	return [MJSUIApp createJSObjectWithContext:ctx controller:controller instance:uiApp];
+	return uiApp.jsObject;
+}
+
+- (void)dealloc {
+	if(uiApp) {
+		JSValueUnprotectSafe(controller.jsGlobalContext, uiApp.jsObject);
+		[uiApp release];
+		uiApp = nil;
+	}
+	
+	[super dealloc];
 }
 
 @end

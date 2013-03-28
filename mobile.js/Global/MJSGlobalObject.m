@@ -161,41 +161,85 @@ EJ_BIND_FUNCTION(clearInterval, ctx, argc, argv) {
 EJ_BIND_GET(console, ctx) {
 	if(!console) {
 		console = [[MJSConsole alloc] initWithContext:ctx argc:0 argv:NULL];
+		[MJSConsole createJSObjectWithContext:ctx controller:controller instance:console];
+		JSValueProtect(ctx, console.jsObject);
 	}
 	
-	return [MJSConsole createJSObjectWithContext:ctx controller:controller instance:console];
+	return console.jsObject;
 }
 
 EJ_BIND_GET(navigator, ctx) {
 	if(!navigator) {
 		navigator = [[MJSNavigator alloc] initWithContext:ctx argc:0 argv:NULL];
+		[MJSNavigator createJSObjectWithContext:ctx controller:controller instance:navigator];
+		JSValueProtect(ctx, navigator.jsObject);
 	}
 	
-	return [MJSNavigator createJSObjectWithContext:ctx controller:controller instance:navigator];
+	return navigator.jsObject;
 }
 
 EJ_BIND_GET(localStorage, ctx) {
 	if(!localStorage) {
 		localStorage = [[MJSLocalStorage alloc] initWithContext:ctx argc:0 argv:NULL];
+		[MJSLocalStorage createJSObjectWithContext:ctx controller:controller instance:localStorage];
+		JSValueProtect(ctx, localStorage.jsObject);
 	}
 	
-	return [MJSLocalStorage createJSObjectWithContext:ctx controller:controller instance:localStorage];
+	return localStorage.jsObject;
 }
 
 EJ_BIND_GET(screen, ctx) {
 	if(!screen) {
 		screen = [[MJSScreen alloc] initWithContext:ctx argc:0 argv:NULL];
+		[MJSScreen createJSObjectWithContext:ctx controller:controller instance:screen];
+		JSValueProtect(ctx, screen.jsObject);
 	}
 	
-	return [MJSScreen createJSObjectWithContext:ctx controller:controller instance:screen];
+	return screen.jsObject;
 }
 
 EJ_BIND_GET(UI, ctx) {
 	if(!uiObject) {
 		uiObject = [[MJSUIObject alloc] initWithContext:ctx argc:0 argv:NULL];
+		[MJSUIObject createJSObjectWithContext:ctx controller:controller instance:uiObject];
+		JSValueProtect(ctx, uiObject.jsObject);
 	}
 	
-	return [MJSUIObject createJSObjectWithContext:ctx controller:controller instance:uiObject];
+	return uiObject.jsObject;
+}
+
+- (void)dealloc {
+	if(console) {
+		JSValueUnprotectSafe(controller.jsGlobalContext, console.jsObject);
+		[console release];
+		console = nil;
+	}
+	
+	if(navigator) {
+		JSValueUnprotectSafe(controller.jsGlobalContext, navigator.jsObject);
+		[navigator release];
+		navigator = nil;
+	}
+	
+	if(localStorage) {
+		JSValueUnprotectSafe(controller.jsGlobalContext, localStorage.jsObject);
+		[localStorage release];
+		localStorage = nil;
+	}
+	
+	if(screen) {
+		JSValueUnprotectSafe(controller.jsGlobalContext, screen.jsObject);
+		[screen release];
+		screen = nil;
+	}
+	
+	if(uiObject) {
+		JSValueUnprotectSafe(controller.jsGlobalContext, uiObject.jsObject);
+		[uiObject release];
+		uiObject = nil;
+	}
+	
+	[super dealloc];
 }
 
 @end

@@ -154,7 +154,7 @@ void EJConstructorFinalize(JSObjectRef object) {
 	classDef.staticFunctions = functions;
 	
 	if([class instancesRespondToSelector:@selector(hasProperty:context:)]) {
-		classDef.hasProperty = MSJHasProperty;
+		classDef.hasProperty = MJSHasProperty;
 	}
 	
 	if([class instancesRespondToSelector:@selector(getProperty:context:)]) {

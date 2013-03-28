@@ -8,13 +8,25 @@
 
 #import "MJSJavaScriptUIView.h"
 
-@implementation MJSJavaScriptUIView {
-	UIView *_backingView;
+@implementation MJSJavaScriptUIView
+
+@synthesize backingView = _backingView;
+
+- (void)makeBackingView {
+	_backingView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (id)initWithView:(UIView *)view {
+	if((self = [super init])) {
+		_backingView = view;
+	}
+	
+	return self;
 }
 
 - (id)initWithContext:(JSContextRef)ctxp argc:(size_t)argc argv:(const JSValueRef [])argv {
 	if((self = [super initWithContext:ctxp argc:argc argv:argv])) {
-		_backingView = [[UIView alloc] initWithFrame:CGRectZero];
+		[self makeBackingView];
 		
 		if(argc == 4) {
 			if(JSValueIsNumber(ctxp, argv[0]) && JSValueIsNumber(ctxp, argv[1]) && JSValueIsNumber(ctxp, argv[2]) && JSValueIsNumber(ctxp, argv[3])) {
@@ -32,6 +44,13 @@
 	return self;
 }
 
+- (void)dealloc {
+	[_backingView release];
+	_backingView = nil;
+	
+	[super dealloc];
+}
+
 EJ_BIND_GET(backgroundColor, ctx) {
 	return UIColorToJSValue(ctx, _backingView.backgroundColor);
 }
@@ -47,5 +66,8 @@ EJ_BIND_SET(backgroundColor, ctx, backgroundColor) {
 	
 	_backingView.backgroundColor = JSValueToUIColor(ctx, backgroundColor);
 }
+
+EJ_BIND_FUNCTION_NOT_IMPLEMENTED(addSubview)
+EJ_BIND_FUNCTION_NOT_IMPLEMENTED(removeFromSuperview)
 
 @end

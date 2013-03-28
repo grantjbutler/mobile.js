@@ -275,13 +275,14 @@ static inline bool JSStrIsEqualToStr( const JSChar *s1, const char *s2, int leng
 	instance:(EJBindingBase *)instance;
 
 void EJBindingBaseFinalize(JSObjectRef object);
-bool MSJHasProperty(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName);
+bool MJSHasProperty(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName);
 JSValueRef MJSGetProperty(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName, JSValueRef* exception);
 bool MJSSetProperty(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName, JSValueRef value, JSValueRef* exception);
 bool MJSDeleteProperty(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName, JSValueRef* exception);
 JSValueRef MJSCallAsFunction(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef* exception);
 
 @property (nonatomic, readonly) MJSMobileJSController *controller;
+@property (nonatomic, readonly) JSObjectRef jsObject;
 
 @end
 

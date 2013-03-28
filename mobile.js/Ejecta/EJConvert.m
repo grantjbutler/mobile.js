@@ -80,7 +80,7 @@ UIColor *JSValueToUIColor(JSContextRef ctx, JSValueRef v) {
 	
 	NSString *string = JSValueToNSString(ctx, v);
 	
-	NSScanner *scanner = [[NSScanner alloc] initWithString:string];
+	NSScanner *scanner = [[[NSScanner alloc] initWithString:string] autorelease];
 	
 	if([string hasPrefix:@"#"]) {
 		unsigned hexNum;
@@ -105,8 +105,6 @@ UIColor *JSValueToUIColor(JSContextRef ctx, JSValueRef v) {
 		
 		if(![scanner scanString:@"rgb(" intoString:nil]) {
 			if(![scanner scanString:@"rgba(" intoString:nil]) {
-				[scanner release];
-				
 				return nil;
 			}
 		}
@@ -123,8 +121,6 @@ UIColor *JSValueToUIColor(JSContextRef ctx, JSValueRef v) {
 		
 		return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:alpha];
 	}
-	
-	[scanner release];
 	
 	return nil;
 }

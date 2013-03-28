@@ -12,6 +12,8 @@
 #import "MJSGlobalObject.h"
 #import "MJSTimerCollection.h"
 
+NSString *const MJSMobileJSControllerDidLoadMainFileNotification = @"MJSMobileJSControllerDidLoadMainFileNotification";
+
 @implementation MJSMobileJSController
 
 @synthesize jsGlobalContext;
@@ -32,25 +34,34 @@
 		
 		_timers = [[MJSTimerCollection alloc] initWithController:self];
 		
-		NSString *file = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"MJSAppFile"];
-		
-		if(!file) {
-			NSLog(@"No App File specified in Info.plist. Did you forget to set it?");
-		} else {
-			[self performSelector:@selector(loadScriptAtPath:) withObject:file afterDelay:0.0];
-		}
+		[self loadMainFile];
 	}
 
 	return self;
 }
 
 - (void)dealloc {
+	[_timers release];
+	_timers = nil;
+	
 	JSValueUnprotect(jsGlobalContext, jsUndefined);
 	JSGlobalContextRef ctxref = jsGlobalContext;
 	jsGlobalContext = NULL;
 	JSGlobalContextRelease(ctxref);
 	
 	[super dealloc];
+}
+
+- (void)loadMainFile {
+	NSString *file = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"MJSAppFile"];
+	
+	if(!file) {
+		NSLog(@"No App File specified in Info.plist. Did you forget to set it?");
+	} else {
+		[self loadScriptAtPath:file];
+	}
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:MJSMobileJSControllerDidLoadMainFileNotification object:nil];
 }
 
 - (NSString *)pathForResource:(NSString *)path {

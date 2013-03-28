@@ -44,6 +44,7 @@
 		C3B63C1416D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B63C1316D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m */; };
 		C3DC52541704974700BDF683 /* MJSTimerCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC52531704974700BDF683 /* MJSTimerCollection.m */; };
 		C3DC525717049DE500BDF683 /* MJSJavaScriptUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */; };
+		C3DC525C1704BED600BDF683 /* MJSJavaScriptUIScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC525B1704BED600BDF683 /* MJSJavaScriptUIScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,8 @@
 		C3DC52531704974700BDF683 /* MJSTimerCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSTimerCollection.m; sourceTree = "<group>"; };
 		C3DC525517049DE500BDF683 /* MJSJavaScriptUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSJavaScriptUIView.h; sourceTree = "<group>"; };
 		C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptUIView.m; sourceTree = "<group>"; };
+		C3DC525A1704BED600BDF683 /* MJSJavaScriptUIScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSJavaScriptUIScreen.h; sourceTree = "<group>"; };
+		C3DC525B1704BED600BDF683 /* MJSJavaScriptUIScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptUIScreen.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,8 +272,8 @@
 				C340498616E4EEDE0086BD5F /* MJSUIObject.m */,
 				C340498816E4F05C0086BD5F /* MJSUIApp.h */,
 				C340498916E4F05C0086BD5F /* MJSUIApp.m */,
-				C3DC525517049DE500BDF683 /* MJSJavaScriptUIView.h */,
-				C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */,
+				C3DC52591704BEC100BDF683 /* Screens */,
+				C3DC52581704BEBC00BDF683 /* Views */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -282,6 +285,24 @@
 				C3B63C0916D5E29600597F38 /* MJSAlertView.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		C3DC52581704BEBC00BDF683 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3DC525517049DE500BDF683 /* MJSJavaScriptUIView.h */,
+				C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C3DC52591704BEC100BDF683 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C3DC525A1704BED600BDF683 /* MJSJavaScriptUIScreen.h */,
+				C3DC525B1704BED600BDF683 /* MJSJavaScriptUIScreen.m */,
+			);
+			name = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +397,7 @@
 				C3AD9AF016ED58B000B6087C /* MJSArrayAccess.m in Sources */,
 				C3DC52541704974700BDF683 /* MJSTimerCollection.m in Sources */,
 				C3DC525717049DE500BDF683 /* MJSJavaScriptUIView.m in Sources */,
+				C3DC525C1704BED600BDF683 /* MJSJavaScriptUIScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

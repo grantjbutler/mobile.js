@@ -5,7 +5,9 @@
 
 
 @implementation EJBindingBase
+
 @synthesize controller;
+@synthesize jsObject;
 
 - (id)initWithContext:(JSContextRef)ctxp argc:(size_t)argc argv:(const JSValueRef [])argv {
 	if( self = [super init] ) {
@@ -43,7 +45,7 @@ void EJBindingBaseFinalize(JSObjectRef object) {
 	[instance release];
 }
 
-bool MSJHasProperty(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName) {
+bool MJSHasProperty(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName) {
 	id<EJBindingBase> instance = (id<EJBindingBase>)JSObjectGetPrivate(object);
 	
 	NSString *name = [((NSString *)JSStringCopyCFString(kCFAllocatorDefault, propertyName)) autorelease];

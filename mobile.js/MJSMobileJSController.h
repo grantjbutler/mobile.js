@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
+extern NSString *const MJSMobileJSControllerDidLoadMainFileNotification;
+
 @class EJClassLoader, MJSTimerCollection;
 
 @interface MJSMobileJSController : NSObject {
