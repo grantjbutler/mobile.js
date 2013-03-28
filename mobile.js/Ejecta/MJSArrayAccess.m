@@ -54,6 +54,10 @@
 	NSValue *objcValue = [NSValue valueWithPointer:value];
 	
 	if(index < 0 || index >= [_array count]) {
+		NSValue *oldObjcValue = [_array objectAtIndex:index];
+		JSValueRef oldValue = (JSValueRef)[oldObjcValue pointerValue];
+		JSValueUnprotectSafe(ctx, oldValue);
+		
 		[_array replaceObjectAtIndex:index withObject:objcValue];
 	} else {
 		[_array insertObject:objcValue atIndex:index];
@@ -64,6 +68,8 @@
 	if(!self.isMutable) {
 		return;
 	}
+	
+	[self setProperty:name value:controller->jsUndefined context:ctx];
 }
 
 - (void)dealloc {
