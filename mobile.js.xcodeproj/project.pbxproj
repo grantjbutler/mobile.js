@@ -1,0 +1,492 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C315883216DF2B480009CE95 /* MJSGlobalObject+LocalFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = C315882916DF2B480009CE95 /* MJSGlobalObject+LocalFileSystem.m */; };
+		C315883316DF2B480009CE95 /* MJSFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = C315882B16DF2B480009CE95 /* MJSFileSystem.m */; };
+		C315883416DF2B480009CE95 /* MJSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C315882D16DF2B480009CE95 /* MJSEntry.m */; };
+		C315883516DF2B480009CE95 /* MJSDirectoryEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C315882F16DF2B480009CE95 /* MJSDirectoryEntry.m */; };
+		C315883616DF2B480009CE95 /* MJSFileEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C315883116DF2B480009CE95 /* MJSFileEntry.m */; };
+		C31E7BD616D562AD0056BCE3 /* EJClassLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E7BD516D562AD0056BCE3 /* EJClassLoader.m */; };
+		C31E7BDA16D565600056BCE3 /* MJSGlobalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E7BD916D565600056BCE3 /* MJSGlobalObject.m */; };
+		C340498716E4EEDE0086BD5F /* MJSUIObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C340498616E4EEDE0086BD5F /* MJSUIObject.m */; };
+		C340498A16E4F05C0086BD5F /* MJSUIApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C340498916E4F05C0086BD5F /* MJSUIApp.m */; };
+		C38C8A4C16D2C51800E13781 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38C8A4B16D2C51800E13781 /* UIKit.framework */; };
+		C38C8A4E16D2C51800E13781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38C8A4D16D2C51800E13781 /* Foundation.framework */; };
+		C38C8A5016D2C51800E13781 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C38C8A4F16D2C51800E13781 /* CoreGraphics.framework */; };
+		C38C8A5616D2C51800E13781 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C38C8A5416D2C51800E13781 /* InfoPlist.strings */; };
+		C38C8A5816D2C51800E13781 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C8A5716D2C51800E13781 /* main.m */; };
+		C38C8A5C16D2C51800E13781 /* MJSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C8A5B16D2C51800E13781 /* MJSAppDelegate.m */; };
+		C38C8A5E16D2C51800E13781 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C38C8A5D16D2C51800E13781 /* Default.png */; };
+		C38C8A6016D2C51800E13781 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C38C8A5F16D2C51800E13781 /* Default@2x.png */; };
+		C38C8A6216D2C51800E13781 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C38C8A6116D2C51800E13781 /* Default-568h@2x.png */; };
+		C38C8A6D16D2C58900E13781 /* EJBindingBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C8A6A16D2C58900E13781 /* EJBindingBase.m */; };
+		C38C8A6E16D2C58900E13781 /* EJBindingEventedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C8A6C16D2C58900E13781 /* EJBindingEventedBase.m */; };
+		C38C8A7416D2C59400E13781 /* EJConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C8A7216D2C59400E13781 /* EJConvert.m */; };
+		C38C8A7716D2C6FF00E13781 /* MJSMobileJSController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38C8A7616D2C6FF00E13781 /* MJSMobileJSController.m */; };
+		C38C8A7916D2D34E00E13781 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C38C8A7816D2D34E00E13781 /* libicucore.dylib */; };
+		C38C8A7B16D2D35300E13781 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C38C8A7A16D2D35300E13781 /* libstdc++.dylib */; };
+		C38C8A8316D2D3CF00E13781 /* libJavaScriptCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38C8A8116D2D3CF00E13781 /* libJavaScriptCore.a */; };
+		C399E38A16D71E89005E58B5 /* MJSNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = C399E38916D71E89005E58B5 /* MJSNavigator.m */; };
+		C399E38F16D71E93005E58B5 /* MJSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = C399E38C16D71E93005E58B5 /* MJSLocalStorage.m */; };
+		C399E39016D71E93005E58B5 /* MJSScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = C399E38E16D71E93005E58B5 /* MJSScreen.m */; };
+		C399E39216D71EA8005E58B5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C399E39116D71EA8005E58B5 /* SystemConfiguration.framework */; };
+		C3AD9AF016ED58B000B6087C /* MJSArrayAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = C3AD9AEF16ED58B000B6087C /* MJSArrayAccess.m */; };
+		C3B63C0416D5E27700597F38 /* MJSExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B63C0116D5E27700597F38 /* MJSExceptions.m */; };
+		C3B63C0A16D5E29600597F38 /* MJSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B63C0916D5E29600597F38 /* MJSAlertView.m */; };
+		C3B63C0E16D5E51900597F38 /* App.js in Resources */ = {isa = PBXBuildFile; fileRef = C3B63C0C16D5E4DB00597F38 /* App.js */; };
+		C3B63C1116D5E71A00597F38 /* MJSConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B63C1016D5E71A00597F38 /* MJSConsole.m */; };
+		C3B63C1416D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B63C1316D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C315882816DF2B480009CE95 /* MJSGlobalObject+LocalFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MJSGlobalObject+LocalFileSystem.h"; sourceTree = "<group>"; };
+		C315882916DF2B480009CE95 /* MJSGlobalObject+LocalFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MJSGlobalObject+LocalFileSystem.m"; sourceTree = "<group>"; };
+		C315882A16DF2B480009CE95 /* MJSFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSFileSystem.h; sourceTree = "<group>"; };
+		C315882B16DF2B480009CE95 /* MJSFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSFileSystem.m; sourceTree = "<group>"; };
+		C315882C16DF2B480009CE95 /* MJSEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSEntry.h; sourceTree = "<group>"; };
+		C315882D16DF2B480009CE95 /* MJSEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSEntry.m; sourceTree = "<group>"; };
+		C315882E16DF2B480009CE95 /* MJSDirectoryEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSDirectoryEntry.h; sourceTree = "<group>"; };
+		C315882F16DF2B480009CE95 /* MJSDirectoryEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSDirectoryEntry.m; sourceTree = "<group>"; };
+		C315883016DF2B480009CE95 /* MJSFileEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSFileEntry.h; sourceTree = "<group>"; };
+		C315883116DF2B480009CE95 /* MJSFileEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSFileEntry.m; sourceTree = "<group>"; };
+		C31E7BD416D562AD0056BCE3 /* EJClassLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJClassLoader.h; sourceTree = "<group>"; };
+		C31E7BD516D562AD0056BCE3 /* EJClassLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJClassLoader.m; sourceTree = "<group>"; };
+		C31E7BD816D565600056BCE3 /* MJSGlobalObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSGlobalObject.h; sourceTree = "<group>"; };
+		C31E7BD916D565600056BCE3 /* MJSGlobalObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSGlobalObject.m; sourceTree = "<group>"; };
+		C340498516E4EEDE0086BD5F /* MJSUIObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSUIObject.h; sourceTree = "<group>"; };
+		C340498616E4EEDE0086BD5F /* MJSUIObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSUIObject.m; sourceTree = "<group>"; };
+		C340498816E4F05C0086BD5F /* MJSUIApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSUIApp.h; sourceTree = "<group>"; };
+		C340498916E4F05C0086BD5F /* MJSUIApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSUIApp.m; sourceTree = "<group>"; };
+		C38C8A4716D2C51800E13781 /* mobile.js.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobile.js.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C38C8A4B16D2C51800E13781 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C38C8A4D16D2C51800E13781 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C38C8A4F16D2C51800E13781 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C38C8A5316D2C51800E13781 /* mobile.js-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "mobile.js-Info.plist"; sourceTree = "<group>"; };
+		C38C8A5516D2C51800E13781 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C38C8A5716D2C51800E13781 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C38C8A5916D2C51800E13781 /* mobile.js-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobile.js-Prefix.pch"; sourceTree = "<group>"; };
+		C38C8A5A16D2C51800E13781 /* MJSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJSAppDelegate.h; sourceTree = "<group>"; };
+		C38C8A5B16D2C51800E13781 /* MJSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJSAppDelegate.m; sourceTree = "<group>"; };
+		C38C8A5D16D2C51800E13781 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C38C8A5F16D2C51800E13781 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C38C8A6116D2C51800E13781 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C38C8A6916D2C58900E13781 /* EJBindingBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJBindingBase.h; sourceTree = "<group>"; };
+		C38C8A6A16D2C58900E13781 /* EJBindingBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJBindingBase.m; sourceTree = "<group>"; };
+		C38C8A6B16D2C58900E13781 /* EJBindingEventedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJBindingEventedBase.h; sourceTree = "<group>"; };
+		C38C8A6C16D2C58900E13781 /* EJBindingEventedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJBindingEventedBase.m; sourceTree = "<group>"; };
+		C38C8A7116D2C59400E13781 /* EJConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJConvert.h; sourceTree = "<group>"; };
+		C38C8A7216D2C59400E13781 /* EJConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJConvert.m; sourceTree = "<group>"; };
+		C38C8A7516D2C6FF00E13781 /* MJSMobileJSController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSMobileJSController.h; sourceTree = "<group>"; };
+		C38C8A7616D2C6FF00E13781 /* MJSMobileJSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSMobileJSController.m; sourceTree = "<group>"; };
+		C38C8A7816D2D34E00E13781 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		C38C8A7A16D2D35300E13781 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		C38C8A8016D2D3CF00E13781 /* JavaScriptCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = JavaScriptCore; path = Vendor/JavaScriptCore; sourceTree = "<group>"; };
+		C38C8A8116D2D3CF00E13781 /* libJavaScriptCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJavaScriptCore.a; path = Vendor/libJavaScriptCore.a; sourceTree = "<group>"; };
+		C399E38816D71E89005E58B5 /* MJSNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSNavigator.h; sourceTree = "<group>"; };
+		C399E38916D71E89005E58B5 /* MJSNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSNavigator.m; sourceTree = "<group>"; };
+		C399E38B16D71E93005E58B5 /* MJSLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSLocalStorage.h; sourceTree = "<group>"; };
+		C399E38C16D71E93005E58B5 /* MJSLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSLocalStorage.m; sourceTree = "<group>"; };
+		C399E38D16D71E93005E58B5 /* MJSScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSScreen.h; sourceTree = "<group>"; };
+		C399E38E16D71E93005E58B5 /* MJSScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSScreen.m; sourceTree = "<group>"; };
+		C399E39116D71EA8005E58B5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C3AD9AEE16ED58B000B6087C /* MJSArrayAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJSArrayAccess.h; path = ../Ejecta/MJSArrayAccess.h; sourceTree = "<group>"; };
+		C3AD9AEF16ED58B000B6087C /* MJSArrayAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MJSArrayAccess.m; path = ../Ejecta/MJSArrayAccess.m; sourceTree = "<group>"; };
+		C3B63C0016D5E27700597F38 /* MJSExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSExceptions.h; sourceTree = "<group>"; };
+		C3B63C0116D5E27700597F38 /* MJSExceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSExceptions.m; sourceTree = "<group>"; };
+		C3B63C0816D5E29600597F38 /* MJSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSAlertView.h; sourceTree = "<group>"; };
+		C3B63C0916D5E29600597F38 /* MJSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSAlertView.m; sourceTree = "<group>"; };
+		C3B63C0C16D5E4DB00597F38 /* App.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = App.js; sourceTree = "<group>"; };
+		C3B63C0F16D5E71A00597F38 /* MJSConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSConsole.h; sourceTree = "<group>"; };
+		C3B63C1016D5E71A00597F38 /* MJSConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSConsole.m; sourceTree = "<group>"; };
+		C3B63C1216D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSJavaScriptXMLHttpRequest.h; sourceTree = "<group>"; };
+		C3B63C1316D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptXMLHttpRequest.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C38C8A4416D2C51800E13781 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C399E39216D71EA8005E58B5 /* SystemConfiguration.framework in Frameworks */,
+				C38C8A7B16D2D35300E13781 /* libstdc++.dylib in Frameworks */,
+				C38C8A7916D2D34E00E13781 /* libicucore.dylib in Frameworks */,
+				C38C8A4C16D2C51800E13781 /* UIKit.framework in Frameworks */,
+				C38C8A4E16D2C51800E13781 /* Foundation.framework in Frameworks */,
+				C38C8A5016D2C51800E13781 /* CoreGraphics.framework in Frameworks */,
+				C38C8A8316D2D3CF00E13781 /* libJavaScriptCore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C315882716DF2B3A0009CE95 /* File System */ = {
+			isa = PBXGroup;
+			children = (
+				C315882816DF2B480009CE95 /* MJSGlobalObject+LocalFileSystem.h */,
+				C315882916DF2B480009CE95 /* MJSGlobalObject+LocalFileSystem.m */,
+				C315882A16DF2B480009CE95 /* MJSFileSystem.h */,
+				C315882B16DF2B480009CE95 /* MJSFileSystem.m */,
+				C315882C16DF2B480009CE95 /* MJSEntry.h */,
+				C315882D16DF2B480009CE95 /* MJSEntry.m */,
+				C315882E16DF2B480009CE95 /* MJSDirectoryEntry.h */,
+				C315882F16DF2B480009CE95 /* MJSDirectoryEntry.m */,
+				C315883016DF2B480009CE95 /* MJSFileEntry.h */,
+				C315883116DF2B480009CE95 /* MJSFileEntry.m */,
+			);
+			name = "File System";
+			path = Global;
+			sourceTree = "<group>";
+		};
+		C31E7BD716D565310056BCE3 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				C3B63C0616D5E27B00597F38 /* Helpers */,
+				C31E7BD816D565600056BCE3 /* MJSGlobalObject.h */,
+				C31E7BD916D565600056BCE3 /* MJSGlobalObject.m */,
+				C3B63C0F16D5E71A00597F38 /* MJSConsole.h */,
+				C3B63C1016D5E71A00597F38 /* MJSConsole.m */,
+				C3B63C1216D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.h */,
+				C3B63C1316D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m */,
+				C399E38816D71E89005E58B5 /* MJSNavigator.h */,
+				C399E38916D71E89005E58B5 /* MJSNavigator.m */,
+				C399E38B16D71E93005E58B5 /* MJSLocalStorage.h */,
+				C399E38C16D71E93005E58B5 /* MJSLocalStorage.m */,
+				C399E38D16D71E93005E58B5 /* MJSScreen.h */,
+				C399E38E16D71E93005E58B5 /* MJSScreen.m */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		C38C8A3C16D2C51800E13781 = {
+			isa = PBXGroup;
+			children = (
+				C38C8A5116D2C51800E13781 /* mobile.js */,
+				C38C8A4A16D2C51800E13781 /* Frameworks */,
+				C38C8A4816D2C51800E13781 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C38C8A4816D2C51800E13781 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C38C8A4716D2C51800E13781 /* mobile.js.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C38C8A4A16D2C51800E13781 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C399E39116D71EA8005E58B5 /* SystemConfiguration.framework */,
+				C38C8A8016D2D3CF00E13781 /* JavaScriptCore */,
+				C38C8A8116D2D3CF00E13781 /* libJavaScriptCore.a */,
+				C38C8A7A16D2D35300E13781 /* libstdc++.dylib */,
+				C38C8A7816D2D34E00E13781 /* libicucore.dylib */,
+				C38C8A4B16D2C51800E13781 /* UIKit.framework */,
+				C38C8A4D16D2C51800E13781 /* Foundation.framework */,
+				C38C8A4F16D2C51800E13781 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C38C8A5116D2C51800E13781 /* mobile.js */ = {
+			isa = PBXGroup;
+			children = (
+				C38C8A6816D2C52700E13781 /* Ejecta */,
+				C3B63C0716D5E28F00597F38 /* UI */,
+				C31E7BD716D565310056BCE3 /* Global */,
+				C315882716DF2B3A0009CE95 /* File System */,
+				C38C8A5A16D2C51800E13781 /* MJSAppDelegate.h */,
+				C38C8A5B16D2C51800E13781 /* MJSAppDelegate.m */,
+				C38C8A7516D2C6FF00E13781 /* MJSMobileJSController.h */,
+				C38C8A7616D2C6FF00E13781 /* MJSMobileJSController.m */,
+				C38C8A5216D2C51800E13781 /* Supporting Files */,
+			);
+			path = mobile.js;
+			sourceTree = "<group>";
+		};
+		C38C8A5216D2C51800E13781 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C38C8A5316D2C51800E13781 /* mobile.js-Info.plist */,
+				C38C8A5416D2C51800E13781 /* InfoPlist.strings */,
+				C38C8A5716D2C51800E13781 /* main.m */,
+				C38C8A5916D2C51800E13781 /* mobile.js-Prefix.pch */,
+				C38C8A5D16D2C51800E13781 /* Default.png */,
+				C38C8A5F16D2C51800E13781 /* Default@2x.png */,
+				C38C8A6116D2C51800E13781 /* Default-568h@2x.png */,
+				C3B63C0C16D5E4DB00597F38 /* App.js */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C38C8A6816D2C52700E13781 /* Ejecta */ = {
+			isa = PBXGroup;
+			children = (
+				C38C8A6916D2C58900E13781 /* EJBindingBase.h */,
+				C38C8A6A16D2C58900E13781 /* EJBindingBase.m */,
+				C38C8A6B16D2C58900E13781 /* EJBindingEventedBase.h */,
+				C38C8A6C16D2C58900E13781 /* EJBindingEventedBase.m */,
+				C31E7BD416D562AD0056BCE3 /* EJClassLoader.h */,
+				C31E7BD516D562AD0056BCE3 /* EJClassLoader.m */,
+				C38C8A7116D2C59400E13781 /* EJConvert.h */,
+				C38C8A7216D2C59400E13781 /* EJConvert.m */,
+			);
+			path = Ejecta;
+			sourceTree = "<group>";
+		};
+		C3B63C0616D5E27B00597F38 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C3AD9AEE16ED58B000B6087C /* MJSArrayAccess.h */,
+				C3AD9AEF16ED58B000B6087C /* MJSArrayAccess.m */,
+				C3B63C0016D5E27700597F38 /* MJSExceptions.h */,
+				C3B63C0116D5E27700597F38 /* MJSExceptions.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		C3B63C0716D5E28F00597F38 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C3B63C0B16D5E29C00597F38 /* Helpers */,
+				C340498516E4EEDE0086BD5F /* MJSUIObject.h */,
+				C340498616E4EEDE0086BD5F /* MJSUIObject.m */,
+				C340498816E4F05C0086BD5F /* MJSUIApp.h */,
+				C340498916E4F05C0086BD5F /* MJSUIApp.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		C3B63C0B16D5E29C00597F38 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C3B63C0816D5E29600597F38 /* MJSAlertView.h */,
+				C3B63C0916D5E29600597F38 /* MJSAlertView.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C38C8A4616D2C51800E13781 /* mobile.js */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C38C8A6516D2C51800E13781 /* Build configuration list for PBXNativeTarget "mobile.js" */;
+			buildPhases = (
+				C38C8A4316D2C51800E13781 /* Sources */,
+				C38C8A4416D2C51800E13781 /* Frameworks */,
+				C38C8A4516D2C51800E13781 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mobile.js;
+			productName = mobile.js;
+			productReference = C38C8A4716D2C51800E13781 /* mobile.js.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C38C8A3E16D2C51800E13781 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MJS;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Grant Butler";
+			};
+			buildConfigurationList = C38C8A4116D2C51800E13781 /* Build configuration list for PBXProject "mobile.js" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C38C8A3C16D2C51800E13781;
+			productRefGroup = C38C8A4816D2C51800E13781 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C38C8A4616D2C51800E13781 /* mobile.js */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C38C8A4516D2C51800E13781 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3B63C0E16D5E51900597F38 /* App.js in Resources */,
+				C38C8A5616D2C51800E13781 /* InfoPlist.strings in Resources */,
+				C38C8A5E16D2C51800E13781 /* Default.png in Resources */,
+				C38C8A6016D2C51800E13781 /* Default@2x.png in Resources */,
+				C38C8A6216D2C51800E13781 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C38C8A4316D2C51800E13781 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C38C8A5816D2C51800E13781 /* main.m in Sources */,
+				C38C8A5C16D2C51800E13781 /* MJSAppDelegate.m in Sources */,
+				C38C8A6D16D2C58900E13781 /* EJBindingBase.m in Sources */,
+				C38C8A6E16D2C58900E13781 /* EJBindingEventedBase.m in Sources */,
+				C38C8A7416D2C59400E13781 /* EJConvert.m in Sources */,
+				C38C8A7716D2C6FF00E13781 /* MJSMobileJSController.m in Sources */,
+				C31E7BD616D562AD0056BCE3 /* EJClassLoader.m in Sources */,
+				C31E7BDA16D565600056BCE3 /* MJSGlobalObject.m in Sources */,
+				C3B63C0416D5E27700597F38 /* MJSExceptions.m in Sources */,
+				C3B63C0A16D5E29600597F38 /* MJSAlertView.m in Sources */,
+				C3B63C1116D5E71A00597F38 /* MJSConsole.m in Sources */,
+				C3B63C1416D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m in Sources */,
+				C399E38A16D71E89005E58B5 /* MJSNavigator.m in Sources */,
+				C399E38F16D71E93005E58B5 /* MJSLocalStorage.m in Sources */,
+				C399E39016D71E93005E58B5 /* MJSScreen.m in Sources */,
+				C315883216DF2B480009CE95 /* MJSGlobalObject+LocalFileSystem.m in Sources */,
+				C315883316DF2B480009CE95 /* MJSFileSystem.m in Sources */,
+				C315883416DF2B480009CE95 /* MJSEntry.m in Sources */,
+				C315883516DF2B480009CE95 /* MJSDirectoryEntry.m in Sources */,
+				C315883616DF2B480009CE95 /* MJSFileEntry.m in Sources */,
+				C340498716E4EEDE0086BD5F /* MJSUIObject.m in Sources */,
+				C340498A16E4F05C0086BD5F /* MJSUIApp.m in Sources */,
+				C3AD9AF016ED58B000B6087C /* MJSArrayAccess.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C38C8A5416D2C51800E13781 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C38C8A5516D2C51800E13781 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C38C8A6316D2C51800E13781 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C38C8A6416D2C51800E13781 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C38C8A6616D2C51800E13781 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mobile.js/mobile.js-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Vendor\"";
+				INFOPLIST_FILE = "mobile.js/mobile.js-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Vendor\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C38C8A6716D2C51800E13781 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mobile.js/mobile.js-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Vendor\"";
+				INFOPLIST_FILE = "mobile.js/mobile.js-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Vendor\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C38C8A4116D2C51800E13781 /* Build configuration list for PBXProject "mobile.js" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C38C8A6316D2C51800E13781 /* Debug */,
+				C38C8A6416D2C51800E13781 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C38C8A6516D2C51800E13781 /* Build configuration list for PBXNativeTarget "mobile.js" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C38C8A6616D2C51800E13781 /* Debug */,
+				C38C8A6716D2C51800E13781 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C38C8A3E16D2C51800E13781 /* Project object */;
+}
