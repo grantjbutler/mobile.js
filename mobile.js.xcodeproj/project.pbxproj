@@ -43,6 +43,7 @@
 		C3B63C1116D5E71A00597F38 /* MJSConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B63C1016D5E71A00597F38 /* MJSConsole.m */; };
 		C3B63C1416D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B63C1316D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m */; };
 		C3DC52541704974700BDF683 /* MJSTimerCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC52531704974700BDF683 /* MJSTimerCollection.m */; };
+		C3DC525717049DE500BDF683 /* MJSJavaScriptUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,8 @@
 		C3B63C1316D5E88500597F38 /* MJSJavaScriptXMLHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptXMLHttpRequest.m; sourceTree = "<group>"; };
 		C3DC52521704974700BDF683 /* MJSTimerCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSTimerCollection.h; sourceTree = "<group>"; };
 		C3DC52531704974700BDF683 /* MJSTimerCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSTimerCollection.m; sourceTree = "<group>"; };
+		C3DC525517049DE500BDF683 /* MJSJavaScriptUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSJavaScriptUIView.h; sourceTree = "<group>"; };
+		C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptUIView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +269,8 @@
 				C340498616E4EEDE0086BD5F /* MJSUIObject.m */,
 				C340498816E4F05C0086BD5F /* MJSUIApp.h */,
 				C340498916E4F05C0086BD5F /* MJSUIApp.m */,
+				C3DC525517049DE500BDF683 /* MJSJavaScriptUIView.h */,
+				C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				C340498A16E4F05C0086BD5F /* MJSUIApp.m in Sources */,
 				C3AD9AF016ED58B000B6087C /* MJSArrayAccess.m in Sources */,
 				C3DC52541704974700BDF683 /* MJSTimerCollection.m in Sources */,
+				C3DC525717049DE500BDF683 /* MJSJavaScriptUIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

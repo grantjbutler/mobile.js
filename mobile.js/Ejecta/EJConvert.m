@@ -75,3 +75,73 @@ JSValueRef JSMakeErrorWithType(JSContextRef ctx, NSString *message, NSString *ty
 	return result;
 }
 
+UIColor *JSValueToUIColor(JSContextRef ctx, JSValueRef v) {
+	static NSCharacterSet *spaceCommaCharacterSet = nil;
+	
+	NSString *string = JSValueToNSString(ctx, v);
+	
+	NSScanner *scanner = [[NSScanner alloc] initWithString:string];
+	
+	if([string hasPrefix:@"#"]) {
+		unsigned hexNum;
+		
+		[scanner scanString:@"#" intoString:nil];
+		[scanner scanHexInt:&hexNum];
+		
+		int r = (hexNum >> 16) & 0xFF;
+		int g = (hexNum >> 8) & 0xFF;
+		int b = (hexNum) & 0xFF;
+		
+		return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0];
+	} else if([string hasPrefix:@"rgb("] || [string hasPrefix:@"rgba("]) {
+		if(!spaceCommaCharacterSet) {
+			spaceCommaCharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@", "] retain];
+		}
+		
+		int r = 0;
+		int g = 0;
+		int b = 0;
+		double alpha = 1.0;
+		
+		if(![scanner scanString:@"rgb(" intoString:nil]) {
+			if(![scanner scanString:@"rgba(" intoString:nil]) {
+				[scanner release];
+				
+				return nil;
+			}
+		}
+		
+		[scanner scanInt:&r];
+		[scanner scanCharactersFromSet:spaceCommaCharacterSet intoString:nil];
+		[scanner scanInt:&g];
+		[scanner scanCharactersFromSet:spaceCommaCharacterSet intoString:nil];
+		[scanner scanInt:&b];
+		
+		if([scanner scanCharactersFromSet:spaceCommaCharacterSet intoString:nil]) {
+			[scanner scanDouble:&alpha];
+		}
+		
+		return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:alpha];
+	}
+	
+	[scanner release];
+	
+	return nil;
+}
+
+JSValueRef UIColorToJSValue(JSContextRef ctx, UIColor *color) {
+	CGColorRef cgColor = color.CGColor;
+	const CGFloat *components = CGColorGetComponents(cgColor);
+	CGFloat alpha = CGColorGetAlpha(cgColor);
+	CGColorSpaceModel model = CGColorSpaceGetModel(CGColorGetColorSpace(cgColor));
+	NSString *string = nil;
+	
+	if(model == kCGColorSpaceModelMonochrome) {
+		string = [NSString stringWithFormat:@"rgba(%f, %f, %f, %f)", components[0] * 255.0, components[0] * 255.0, components[0] * 255.0, alpha];
+	} else if(model == kCGColorSpaceModelRGB) {
+		string = [NSString stringWithFormat:@"rgba(%f, %f, %f, %f)", components[0] * 255.0, components[1] * 255.0, components[2] * 255.0, alpha];
+	}
+	
+	return (string) ? NSStringToJSValue(ctx, string) : NULL;
+}
+

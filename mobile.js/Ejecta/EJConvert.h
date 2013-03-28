@@ -19,6 +19,9 @@ JSValueRef NSErrorToJSValue( JSContextRef ctx, NSError *e );
 JSValueRef JSMakeError(JSContextRef ctx, NSString *message);
 JSValueRef JSMakeErrorWithType(JSContextRef ctx, NSString *message, NSString *type);
 
+UIColor *JSValueToUIColor(JSContextRef ctx, JSValueRef v);
+JSValueRef UIColorToJSValue(JSContextRef ctx, UIColor *color);
+	
 #ifdef __cplusplus
 }
 #endif
