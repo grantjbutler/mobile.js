@@ -127,6 +127,22 @@ EJ_BIND_FUNCTION(prompt, ctx, argc, argv) {
 	return res;
 }
 
+EJ_BIND_FUNCTION(setTimeout, ctx, argc, argv) {
+	return [controller createTimer:ctx argc:argc argv:argv repeat:NO];
+}
+
+EJ_BIND_FUNCTION(clearTimeout, ctx, argc, argv) {
+	return [controller deleteTimer:ctx argc:argc argv:argv];
+}
+
+EJ_BIND_FUNCTION(setInterval, ctx, argc, argv) {
+	return [controller createTimer:ctx argc:argc argv:argv repeat:YES];
+}
+
+EJ_BIND_FUNCTION(clearInterval, ctx, argc, argv) {
+	return [controller deleteTimer:ctx argc:argc argv:argv];
+}
+
 //EJ_BIND_FUNCTION(require, ctx, argc, argv) {
 //	EJ_MIN_ARGS(argc, 1)
 //	

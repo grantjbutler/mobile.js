@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@class EJClassLoader;
+@class EJClassLoader, MJSTimerCollection;
 
 @interface MJSMobileJSController : NSObject {
 	JSGlobalContextRef jsGlobalContext;
+	MJSTimerCollection *_timers;
 	
 	// Public for fast access in bound functions
 	@public JSValueRef jsUndefined;
@@ -26,8 +27,8 @@
 
 - (JSValueRef)invokeCallback:(JSObjectRef)callback thisObject:(JSObjectRef)thisObject argc:(size_t)argc argv:(const JSValueRef [])argv;
 - (NSString *)pathForResource:(NSString *)resourcePath;
-//- (JSValueRef)deleteTimer:(JSContextRef)ctx argc:(size_t)argc argv:(const JSValueRef [])argv;
+- (JSValueRef)deleteTimer:(JSContextRef)ctx argc:(size_t)argc argv:(const JSValueRef [])argv;
 - (JSValueRef)loadModuleWithId:(NSString *)moduleId module:(JSValueRef)module exports:(JSValueRef)exports;
-//- (JSValueRef)createTimer:(JSContextRef)ctxp argc:(size_t)argc argv:(const JSValueRef [])argv repeat:(BOOL)repeat;
+- (JSValueRef)createTimer:(JSContextRef)ctxp argc:(size_t)argc argv:(const JSValueRef [])argv repeat:(BOOL)repeat;
 
 @end

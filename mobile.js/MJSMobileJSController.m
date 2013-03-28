@@ -10,6 +10,7 @@
 #import "EJClassLoader.h"
 #import "EJConvert.h"
 #import "MJSGlobalObject.h"
+#import "MJSTimerCollection.h"
 
 @implementation MJSMobileJSController
 
@@ -28,6 +29,8 @@
 		[globalObject createWithJSObject:globalJSObject controller:self];
 		
 		JSObjectSetPrivate(globalJSObject, (void *)globalObject);
+		
+		_timers = [[MJSTimerCollection alloc] initWithController:self];
 		
 		NSString *file = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"MJSAppFile"];
 		
@@ -138,6 +141,29 @@
 	
 	JSStringRelease( jsLinePropertyName );
 	JSStringRelease( jsFilePropertyName );
+}
+
+- (JSValueRef)createTimer:(JSContextRef)ctxp argc:(size_t)argc argv:(const JSValueRef [])argv repeat:(BOOL)repeat {
+	EJ_MIN_ARGS(argc, 2)
+	
+	if(!JSValueIsObject(ctxp, argv[0]) || !JSValueIsNumber(jsGlobalContext, argv[1])) {
+		return NULL;
+	}
+	
+	JSObjectRef func = JSValueToObject(ctxp, argv[0], NULL);
+	float interval = JSValueToNumberFast(ctxp, argv[1])/1000;
+	
+	int timerId = [_timers addTimerWithTimeout:interval callback:func repeats:repeat];
+	return JSValueMakeNumber( ctxp, timerId );
+}
+
+- (JSValueRef)deleteTimer:(JSContextRef)ctxp argc:(size_t)argc argv:(const JSValueRef [])argv {
+	EJ_MIN_ARGS(argc, 1)
+	
+	if(!JSValueIsNumber(ctxp, argv[0])) return NULL;
+	
+	[_timers clearTimerWithId:JSValueToNumberFast(ctxp, argv[0])];
+	return NULL;
 }
 
 - (void)clearCaches {
