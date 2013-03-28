@@ -45,6 +45,8 @@
 		C3DC52541704974700BDF683 /* MJSTimerCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC52531704974700BDF683 /* MJSTimerCollection.m */; };
 		C3DC525717049DE500BDF683 /* MJSJavaScriptUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */; };
 		C3DC525C1704BED600BDF683 /* MJSJavaScriptUIScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC525B1704BED600BDF683 /* MJSJavaScriptUIScreen.m */; };
+		C3DC52601704D8DA00BDF683 /* MJSJavaScriptUINavigationScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC525F1704D8DA00BDF683 /* MJSJavaScriptUINavigationScreen.m */; };
+		C3DC52631704DCC500BDF683 /* MJSJavaScriptUIBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC52621704DCC400BDF683 /* MJSJavaScriptUIBarButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +117,10 @@
 		C3DC525617049DE500BDF683 /* MJSJavaScriptUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptUIView.m; sourceTree = "<group>"; };
 		C3DC525A1704BED600BDF683 /* MJSJavaScriptUIScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSJavaScriptUIScreen.h; sourceTree = "<group>"; };
 		C3DC525B1704BED600BDF683 /* MJSJavaScriptUIScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptUIScreen.m; sourceTree = "<group>"; };
+		C3DC525E1704D8D900BDF683 /* MJSJavaScriptUINavigationScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSJavaScriptUINavigationScreen.h; sourceTree = "<group>"; };
+		C3DC525F1704D8DA00BDF683 /* MJSJavaScriptUINavigationScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptUINavigationScreen.m; sourceTree = "<group>"; };
+		C3DC52611704DCC400BDF683 /* MJSJavaScriptUIBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJSJavaScriptUIBarButton.h; sourceTree = "<group>"; };
+		C3DC52621704DCC400BDF683 /* MJSJavaScriptUIBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJSJavaScriptUIBarButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +278,8 @@
 				C340498616E4EEDE0086BD5F /* MJSUIObject.m */,
 				C340498816E4F05C0086BD5F /* MJSUIApp.h */,
 				C340498916E4F05C0086BD5F /* MJSUIApp.m */,
+				C3DC52611704DCC400BDF683 /* MJSJavaScriptUIBarButton.h */,
+				C3DC52621704DCC400BDF683 /* MJSJavaScriptUIBarButton.m */,
 				C3DC52591704BEC100BDF683 /* Screens */,
 				C3DC52581704BEBC00BDF683 /* Views */,
 			);
@@ -301,6 +309,8 @@
 			children = (
 				C3DC525A1704BED600BDF683 /* MJSJavaScriptUIScreen.h */,
 				C3DC525B1704BED600BDF683 /* MJSJavaScriptUIScreen.m */,
+				C3DC525E1704D8D900BDF683 /* MJSJavaScriptUINavigationScreen.h */,
+				C3DC525F1704D8DA00BDF683 /* MJSJavaScriptUINavigationScreen.m */,
 			);
 			name = Screens;
 			sourceTree = "<group>";
@@ -398,6 +408,8 @@
 				C3DC52541704974700BDF683 /* MJSTimerCollection.m in Sources */,
 				C3DC525717049DE500BDF683 /* MJSJavaScriptUIView.m in Sources */,
 				C3DC525C1704BED600BDF683 /* MJSJavaScriptUIScreen.m in Sources */,
+				C3DC52601704D8DA00BDF683 /* MJSJavaScriptUINavigationScreen.m in Sources */,
+				C3DC52631704DCC500BDF683 /* MJSJavaScriptUIBarButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

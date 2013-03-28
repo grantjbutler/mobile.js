@@ -76,6 +76,7 @@ JSValueRef JSMakeErrorWithType(JSContextRef ctx, NSString *message, NSString *ty
 }
 
 UIColor *JSValueToUIColor(JSContextRef ctx, JSValueRef v) {
+	// TODO: Support named colors.
 	static NSCharacterSet *spaceCommaCharacterSet = nil;
 	
 	NSString *string = JSValueToNSString(ctx, v);

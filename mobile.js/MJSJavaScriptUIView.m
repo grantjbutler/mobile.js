@@ -52,7 +52,7 @@
 }
 
 EJ_BIND_GET(backgroundColor, ctx) {
-	return UIColorToJSValue(ctx, _backingView.backgroundColor);
+	return UIColorToJSValue(ctx, self.backingView.backgroundColor);
 }
 
 EJ_BIND_SET(backgroundColor, ctx, backgroundColor) {
@@ -64,10 +64,77 @@ EJ_BIND_SET(backgroundColor, ctx, backgroundColor) {
 		return;
 	}
 	
-	_backingView.backgroundColor = JSValueToUIColor(ctx, backgroundColor);
+	self.backingView.backgroundColor = JSValueToUIColor(ctx, backgroundColor);
 }
 
-EJ_BIND_FUNCTION_NOT_IMPLEMENTED(addSubview)
-EJ_BIND_FUNCTION_NOT_IMPLEMENTED(removeFromSuperview)
+//EJ_BIND_FUNCTION(addSubview, ctx, argc, argv) {
+static JSValueRef _func_addSubview(
+							   JSContextRef ctx,
+							   JSObjectRef function,
+							   JSObjectRef object,
+							   size_t argc,
+							   const JSValueRef argv[],
+							   JSValueRef* exception
+							   ) {
+	id instance = (id)JSObjectGetPrivate(object);
+	JSValueRef ret = NULL;
+	@try {
+		ret = (JSValueRef)objc_msgSend(instance, @selector(_func_addSubview:argc:argv:), ctx, argc, argv);
+	} @catch (NSException *e) {
+		if(exception != NULL) {
+			*exception = NSExceptionToJSValue(ctx, e);
+		}
+	}
+	return ret ? ret : ((EJBindingBase *)instance)->controller->jsUndefined;
+}
+__EJ_GET_POINTER_TO(_func_addSubview)
+
+/* The actual implementation for this method */
+- (JSValueRef)_func_addSubview:(JSContextRef)ctx argc:(size_t)argc argv:(const JSValueRef [])argv {
+	EJ_MIN_ARGS(argc, 1)
+	
+	id jsObject_ = JSObjectGetPrivate(JSValueToObject(ctx, argv[0], NULL));
+	
+	
+	if(![jsObject_ isKindOfClass:[MJSJavaScriptUIView class]]) {
+		[MJSExceptionForType(MJSInvalidArgumentTypeException) raise];
+		
+		return NULL;
+	}
+	
+	MJSJavaScriptUIView *jsView = (MJSJavaScriptUIView *)jsObject_;
+	
+	[self.backingView addSubview:jsView.backingView];
+	
+	return NULL;
+}
+
+//EJ_BIND_FUNCTION(addSubview, ctx, argc, argv) {
+//	if(argc < 1 || !JSValueIsObject(ctx, argv[0])) {
+//		[MJSExceptionForType(MJSTooFewArgumentsException) raise];
+//		
+//		return NULL;
+//	}
+//	
+//	id jsObject_ = JSObjectGetPrivate(JSValueToObject(ctx, argv[0], NULL));
+//	
+//	if(![jsObject_ isKindOfClass:[MJSJavaScriptUIView class]]) {
+//		[MJSExceptionForType(MJSInvalidArgumentTypeException) raise];
+//		
+//		return NULL;
+//	}
+//	
+//	MJSJavaScriptUIView *jsView = (MJSJavaScriptUIView *)jsObject_;
+//	
+//	[self.backingView addSubview:jsView.backingView];
+//	
+//	return NULL;
+//}
+
+EJ_BIND_FUNCTION(removeFromSuperview, ctx, argc, argv) {
+	[self.backingView removeFromSuperview];
+	
+	return NULL;
+}
 
 @end
