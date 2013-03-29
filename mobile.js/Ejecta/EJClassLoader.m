@@ -3,36 +3,13 @@
 #import "MJSMobileJSController.h"
 
 
-static JSClassRef EJGlobalConstructorClass;
 static NSMutableDictionary *EJGlobalJSClassCache;
+static NSMutableDictionary *EJGlobalJSConstructorCache;
 
 typedef struct {
 	Class class;
 	MJSMobileJSController *controller;
 } EJClassWithController;
-
-//JSValueRef EJGetNativeClass(JSContextRef ctx, JSObjectRef object, JSStringRef propertyNameJS, JSValueRef* exception) {
-//	CFStringRef className = JSStringCopyCFString( kCFAllocatorDefault, propertyNameJS );
-//	MJSMobileJSController *controller = JSObjectGetPrivate(object);
-//	
-//	JSObjectRef obj = NULL;
-//	NSString *fullClassName = [@EJ_BINDING_CLASS_PREFIX stringByAppendingString:(NSString *)className];
-//	Class class = NSClassFromString(fullClassName);
-//	
-//	if( class && [class isSubclassOfClass:EJBindingBase.class] ) {
-//		
-//		// Pack the class together with the scriptView into a struct, so it can
-//		// be put in the constructor's private data
-//		EJClassWithController *classWithController = malloc(sizeof(EJClassWithController));
-//		classWithController->class = class;
-//		classWithController->controller = controller;
-//		
-//		obj = JSObjectMake( ctx, EJGlobalConstructorClass, (void *)classWithController );
-//	}
-//	
-//	CFRelease(className);
-//	return obj ? obj : controller->jsUndefined;
-//}
 
 JSObjectRef EJCallAsConstructor(JSContextRef ctx, JSObjectRef constructor, size_t argc, const JSValueRef argv[], JSValueRef* exception) {
 	
@@ -56,6 +33,104 @@ void EJConstructorFinalize(JSObjectRef object) {
 
 
 @implementation EJClassLoader
+
++ (JSClassRef)getJSConstructor:(id)class {
+	JSClassRef jsConstructor = [EJGlobalJSConstructorCache[class] pointerValue];
+	if(jsConstructor) {
+		return jsConstructor;
+	}
+	
+	jsConstructor = [self createJSConstructor:class];
+	EJGlobalJSConstructorCache[class] = [NSValue valueWithPointer:jsConstructor];
+	return jsConstructor;
+}
+
++ (JSClassRef)createJSConstructor:(id)class {
+	// Gather all class methods that return C callbacks for this class or it's parents
+//	NSMutableArray *methods = [[NSMutableArray alloc] init];
+	NSMutableArray *properties = [[NSMutableArray alloc] init];
+	
+	// Traverse this class and all its super classes
+	Class base = EJBindingBase.class;
+	for( Class sc = class; sc != base && [sc isSubclassOfClass:base]; sc = sc.superclass ) {
+		
+		// Traverse all class methods for this class; i.e. all classes that are defined with the
+		// EJ_BIND_CONST macros
+		u_int count;
+		Method *methodList = class_copyMethodList(object_getClass(sc), &count);
+		for (int i = 0; i < count ; i++) {
+			SEL selector = method_getName(methodList[i]);
+			NSString *name = NSStringFromSelector(selector);
+			
+			/*if( [name hasPrefix:@"_ptr_to_func_"] ) {
+				[methods addObject: [name substringFromIndex:sizeof("_ptr_to_func_")-1] ];
+			}
+			else*/ if( [name hasPrefix:@"_ptr_to_const_"] ) {
+				// We only look for getters - a property that has a setter, but no getter will be ignored
+				[properties addObject: [name substringFromIndex:sizeof("_ptr_to_const_")-1] ];
+			}
+		}
+		free(methodList);
+	}
+	
+	
+	// Set up the JSStaticValue struct array
+	JSStaticValue *values = calloc( properties.count + 1, sizeof(JSStaticValue) );
+	for( int i = 0; i < properties.count; i++ ) {
+		NSString *name = properties[i];
+		
+		values[i].name = name.UTF8String;
+		values[i].attributes = kJSPropertyAttributeDontDelete;
+		
+		SEL get = NSSelectorFromString([@"_ptr_to_const_" stringByAppendingString:name]);
+		values[i].getProperty = (JSObjectGetPropertyCallback)[class performSelector:get];
+		values[i].attributes |= kJSPropertyAttributeReadOnly;
+	}
+	
+	// Set up the JSStaticFunction struct array
+//	JSStaticFunction *functions = calloc( methods.count + 1, sizeof(JSStaticFunction) );
+//	for( int i = 0; i < methods.count; i++ ) {
+//		NSString *name = methods[i];
+//		
+//		functions[i].name = name.UTF8String;
+//		functions[i].attributes = kJSPropertyAttributeDontDelete;
+//		
+//		SEL call = NSSelectorFromString([@"_ptr_to_func_" stringByAppendingString:name]);
+//		functions[i].callAsFunction = (JSObjectCallAsFunctionCallback)[class performSelector:call];
+//	}
+	
+	JSClassDefinition constructorClassDef = kJSClassDefinitionEmpty;
+	
+	constructorClassDef.callAsConstructor = EJCallAsConstructor;
+	constructorClassDef.finalize = EJConstructorFinalize;
+	constructorClassDef.staticValues = values;
+	
+	NSString *className = NSStringFromClass(class);
+	
+	if([className hasPrefix:@"MJS"]) {
+		className = [className substringFromIndex:3];
+	}
+	
+	if([className hasPrefix:@"JavaScript"]) {
+		className = [className substringFromIndex:10];
+	}
+	
+	if([className hasPrefix:@"UI"]) {
+		className = [className substringFromIndex:2];
+	}
+	
+	constructorClassDef.className = [[className stringByAppendingString:@"Constructor"] UTF8String];
+	
+	JSClassRef jsConstructor = JSClassCreate(&constructorClassDef);
+	
+	free( values );
+//	free( functions );
+	
+	[properties release];
+//	[methods release];
+	
+	return jsConstructor;
+}
 
 + (JSClassRef)getJSClass:(id)class {
 	// Try the cache first
@@ -186,16 +261,12 @@ void EJConstructorFinalize(JSObjectRef object) {
 
 + (void)initialize {
 	if(self == [EJClassLoader class]) {
-		JSClassDefinition constructorClassDef = kJSClassDefinitionEmpty;
-		constructorClassDef.callAsConstructor = EJCallAsConstructor;
-		constructorClassDef.finalize = EJConstructorFinalize;
-		EJGlobalConstructorClass = JSClassCreate(&constructorClassDef);
-		
 		EJGlobalJSClassCache = [[NSMutableDictionary alloc] initWithCapacity:16];
+		EJGlobalJSConstructorCache = [[NSMutableDictionary alloc] initWithCapacity:16];
 		
 		atexit_b(^{
-			JSClassRelease(EJGlobalConstructorClass);
 			[EJGlobalJSClassCache release];
+			[EJGlobalJSConstructorCache release];
 		});
 	}
 }
@@ -211,7 +282,7 @@ void EJConstructorFinalize(JSObjectRef object) {
 	classWithController->class = class;
 	classWithController->controller = controller;
 	
-	return JSObjectMake( ctx, EJGlobalConstructorClass, (void *)classWithController );
+	return JSObjectMake( ctx, [self getJSConstructor:class], (void *)classWithController );
 }
 
 @end

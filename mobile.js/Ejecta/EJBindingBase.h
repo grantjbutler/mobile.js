@@ -170,7 +170,7 @@ static inline bool JSStrIsEqualToStr( const JSChar *s1, const char *s2, int leng
 // Shorthand to bind const numbers
 
 #define EJ_BIND_CONST(NAME, VALUE) \
-	static JSValueRef _get_##NAME( \
+	static JSValueRef _const_##NAME( \
 		JSContextRef ctx, \
 		JSObjectRef object, \
 		JSStringRef propertyName, \
@@ -178,7 +178,7 @@ static inline bool JSStrIsEqualToStr( const JSChar *s1, const char *s2, int leng
 	) { \
 		return JSValueMakeNumber(ctx, VALUE); \
 	} \
-	__EJ_GET_POINTER_TO(_get_##NAME)
+	__EJ_GET_POINTER_TO(_const_##NAME)
 
 
 // Commas can't be used directly in macro arguments
