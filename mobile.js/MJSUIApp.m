@@ -92,6 +92,8 @@ EJ_BIND_SET(mainScreen, ctx, newScreen) {
 }
 
 - (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
 	JSValueUnprotectSafe(controller.jsGlobalContext, _mainScreen);
 	_mainScreen = NULL;
 	

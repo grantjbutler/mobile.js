@@ -299,4 +299,3 @@ JSValueRef UIColorToJSValue(JSContextRef ctx, UIColor *color) {
 	
 	return (string) ? NSStringToJSValue(ctx, string) : NULL;
 }
-

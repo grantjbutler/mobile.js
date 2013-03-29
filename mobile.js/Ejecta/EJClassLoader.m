@@ -26,6 +26,14 @@ JSObjectRef EJCallAsConstructor(JSContextRef ctx, JSObjectRef constructor, size_
 	return obj;
 }
 
+bool MJSHasInstance(JSContextRef ctx, JSObjectRef constructor, JSValueRef possibleInstance, JSValueRef* exception) {
+	EJClassWithController *classWithController = (EJClassWithController *)JSObjectGetPrivate(constructor);
+	JSObjectRef obj = JSValueToObject(ctx, possibleInstance, NULL);
+	id instance = JSObjectGetPrivate(obj);
+	
+	return [instance isKindOfClass:classWithController->class];
+}
+
 void EJConstructorFinalize(JSObjectRef object) {
 	EJClassWithController *classWithController = (EJClassWithController *)JSObjectGetPrivate(object);
 	free(classWithController);
@@ -104,6 +112,7 @@ void EJConstructorFinalize(JSObjectRef object) {
 	constructorClassDef.callAsConstructor = EJCallAsConstructor;
 	constructorClassDef.finalize = EJConstructorFinalize;
 	constructorClassDef.staticValues = values;
+	constructorClassDef.hasInstance = MJSHasInstance;
 	
 	NSString *className = NSStringFromClass(class);
 	
@@ -227,6 +236,12 @@ void EJConstructorFinalize(JSObjectRef object) {
 	classDef.finalize = EJBindingBaseFinalize;
 	classDef.staticValues = values;
 	classDef.staticFunctions = functions;
+	
+	Class superClass = [class superclass];
+	
+	if(superClass != [EJBindingBase class]) {
+		classDef.parentClass = [self getJSClass:superClass];
+	}
 	
 	if([class instancesRespondToSelector:@selector(hasProperty:context:)]) {
 		classDef.hasProperty = MJSHasProperty;

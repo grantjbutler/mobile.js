@@ -256,6 +256,13 @@ static inline bool JSStrIsEqualToStr( const JSChar *s1, const char *s2, int leng
 		return NULL; \
 	}
 
+#define EJ_MIN_ARGS_NO_RETURN(ARGC, COUNT) \
+	if(ARGC < COUNT) { \
+		[MJSExceptionForType(MJSTooFewArgumentsException) raise]; \
+		\
+		return; \
+	}
+
 
 @protocol EJBindingBase <NSObject>
 

@@ -1,5 +1,10 @@
 UI.App.addEventListener('launch', function() {
 	var screen = new UI.Screen();
+});
+
+/*
+UI.App.addEventListener('launch', function() {
+	var screen = new UI.Screen();
 	screen.title = navigator.platform;
 	screen.view.backgroundColor = 'red';
 	
@@ -25,7 +30,7 @@ function presentScreen(parent) {
 	rightBarButton.addEventListener('tap', function() {
 		screen.dismissScreen();
 	});
-	screen.rightButton = rightBarButton;	
+	screen.rightButton = rightBarButton;
 	
 	var view = new UI.View(0, 0, 320, 40);
 	view.backgroundColor = 'magenta';
@@ -35,3 +40,4 @@ function presentScreen(parent) {
 	var navScreen = new UI.NavigationScreen(screen);
 	parent.presentScreen(navScreen);
 }
+*/

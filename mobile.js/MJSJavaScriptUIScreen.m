@@ -14,6 +14,7 @@
 	MJSJavaScriptUIView *_view;
 	
 	JSObjectRef _rightBarButton;
+	JSObjectRef _leftBarButton;
 }
 
 @synthesize viewController = _viewController;
@@ -31,6 +32,9 @@
 }
 
 - (void)dealloc {
+	JSValueUnprotectSafe(controller.jsGlobalContext, _rightBarButton);
+	JSValueUnprotectSafe(controller.jsGlobalContext, _leftBarButton);
+	
 	JSValueUnprotect(controller.jsGlobalContext, _view.jsObject);
 	[_view release];
 	_view = nil;
@@ -81,6 +85,30 @@ EJ_BIND_SET(rightButton, ctx, val) {
 	JSValueProtect(ctx, rightButtonObject);
 	
 	self.viewController.navigationItem.rightBarButtonItem = ((MJSJavaScriptUIBarButton *)jsObject_).barButtonItem;
+}
+
+EJ_BIND_GET(leftButton, ctx) {
+	return _rightBarButton;
+}
+
+EJ_BIND_SET(leftButton, ctx, val) {
+	JSObjectRef leftButtonObject = JSValueToObject(ctx, val, NULL);
+	id jsObject_ = JSObjectGetPrivate(leftButtonObject);
+	
+	if(![jsObject_ isKindOfClass:[MJSJavaScriptUIBarButton class]]) {
+		[MJSExceptionForType(MJSInvalidArgumentTypeException) raise];
+		
+		return;
+	}
+	
+	if(_leftBarButton) {
+		JSValueUnprotectSafe(ctx, _leftBarButton);
+	}
+	
+	_leftBarButton = leftButtonObject;
+	JSValueProtect(ctx, leftButtonObject);
+	
+	self.viewController.navigationItem.leftBarButtonItem = ((MJSJavaScriptUIBarButton *)jsObject_).barButtonItem;
 }
 
 EJ_BIND_FUNCTION(presentScreen, ctx, argc, argv) {
