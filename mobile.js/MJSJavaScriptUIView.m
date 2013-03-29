@@ -92,4 +92,19 @@ EJ_BIND_FUNCTION(removeFromSuperview, ctx, argc, argv) {
 	return NULL;
 }
 
+EJ_BIND_GET(autoresizingMask, ctx) {
+	return JSValueMakeNumber(ctx, self.backingView.autoresizingMask);
+}
+
+EJ_BIND_SET(autoresizingMask, ctx, mask) {
+	self.backingView.autoresizingMask = JSValueToNumber(ctx, mask, NULL);
+}
+
+EJ_BIND_CONST(FLEXIBLE_LEFT_MARGIN, UIViewAutoresizingFlexibleLeftMargin)
+EJ_BIND_CONST(FLEXIBLE_RIGHT_MARGIN, UIViewAutoresizingFlexibleRightMargin)
+EJ_BIND_CONST(FLEXIBLE_TOP_MARGIN, UIViewAutoresizingFlexibleTopMargin)
+EJ_BIND_CONST(FLEXIBLE_BOTTOM_MARGIN, UIViewAutoresizingFlexibleBottomMargin)
+EJ_BIND_CONST(FLEXIBLE_WIDTH, UIViewAutoresizingFlexibleWidth)
+EJ_BIND_CONST(FLEXIBLE_HEIGHT, UIViewAutoresizingFlexibleHeight)
+
 @end
