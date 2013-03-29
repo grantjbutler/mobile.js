@@ -23,8 +23,6 @@
 		} else {
 			_barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(performAction)];
 		}
-		
-		
 	}
 	
 	return self;
@@ -42,7 +40,19 @@ EJ_BIND_SET(title, ctx, val) {
 	_barButtonItem.title = JSValueToNSString(ctx, val);
 }
 
+EJ_BIND_GET(style, ctx) {
+	return JSValueMakeNumber(ctx, _barButtonItem.style);
+}
+
+EJ_BIND_SET(style, ctx, newStyle) {
+	_barButtonItem.style = JSValueToNumberFast(ctx, newStyle);
+}
+
 EJ_BIND_EVENT(tap)
+
+EJ_BIND_CONST(STYLE_PLAIN, UIBarButtonItemStylePlain)
+EJ_BIND_CONST(STYLE_DONE, UIBarButtonItemStyleDone)
+EJ_BIND_CONST(STYLE_BORDERED, UIBarButtonItemStyleBordered)
 
 EJ_BIND_CONST(DONE, UIBarButtonSystemItemDone)
 EJ_BIND_CONST(CANCEL, UIBarButtonSystemItemCancel)
