@@ -29,6 +29,8 @@ function presentScreen(parent) {
 	
 	var view = new UI.View(0, 0, 320, 40);
 	view.backgroundColor = 'magenta';
+	console.log(view.FLEXIBLE_WIDTH);
+	view.autoresizingMask = UI.View.FLEXIBLE_WIDTH;
 	screen.view.addSubview(view);
 	
 	var navScreen = new UI.NavigationScreen(screen);
