@@ -13,6 +13,8 @@
 @synthesize backingView = _backingView;
 
 - (void)setFrameWithContext:(JSContextRef)ctx argv:(const JSValueRef [])argv startingAtIndex:(NSInteger)index {
+	// EJ_UNPACK_ARGV_OFFSET
+	
 	if(JSValueIsNumber(ctx, argv[index]) && JSValueIsNumber(ctx, argv[index + 1]) && JSValueIsNumber(ctx, argv[index + 2]) && JSValueIsNumber(ctx, argv[index + 3])) {
 		CGRect frame = CGRectZero;
 		frame.origin.x = JSValueToNumberFast(ctx, argv[index]);
@@ -32,6 +34,7 @@
 	Class viewClass = [[self class] backingViewClass];
 	
 	_backingView = [[viewClass alloc] initWithFrame:CGRectZero];
+	[self setFrameWithContext:ctxp argv:argv startingAtIndex:0];
 }
 
 - (id)initWithView:(UIView *)view {
@@ -130,8 +133,8 @@ EJ_BIND_SET(height, ctx, newHeight) {
 EJ_BIND_FUNCTION(addSubview, ctx, argc, argv) {
 	EJ_MIN_ARGS(argc, 1)
 	
-	id jsObject_ = JSObjectGetPrivate(JSValueToObject(ctx, argv[0], NULL));
-	
+	JSObjectRef viewObject = JSValueToObject(ctx, argv[0], NULL);
+	id jsObject_ = JSObjectGetPrivate(viewObject);
 	
 	if(![jsObject_ isKindOfClass:[MJSJavaScriptUIView class]]) {
 		[MJSExceptionForType(MJSInvalidArgumentTypeException) raise];
@@ -143,11 +146,15 @@ EJ_BIND_FUNCTION(addSubview, ctx, argc, argv) {
 	
 	[self.backingView addSubview:jsView.backingView];
 	
+	JSValueProtect(ctx, viewObject);
+	
 	return NULL;
 }
 
 EJ_BIND_FUNCTION(removeFromSuperview, ctx, argc, argv) {
 	[self.backingView removeFromSuperview];
+	
+	JSValueUnprotectSafe(ctx, self.jsObject);
 	
 	return NULL;
 }

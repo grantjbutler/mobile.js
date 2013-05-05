@@ -95,7 +95,14 @@
 		JSValueRef* exception \
 	) { \
 		id instance = (id)JSObjectGetPrivate(object); \
-		objc_msgSend(instance, @selector(_set_##NAME:value:), ctx, value); \
+		@try { \
+			objc_msgSend(instance, @selector(_set_##NAME:value:), ctx, value); \
+		} @catch(NSException *e) { \
+			if(exception != NULL) { \
+				*exception = NSExceptionToJSValue(ctx, e); \
+			} \
+			return false; \
+		} \
 		return true; \
 	} \
 	__EJ_GET_POINTER_TO(_set_##NAME) \

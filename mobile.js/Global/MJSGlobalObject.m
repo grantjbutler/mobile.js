@@ -143,6 +143,16 @@ EJ_BIND_FUNCTION(clearInterval, ctx, argc, argv) {
 	return [controller deleteTimer:ctx argc:argc argv:argv];
 }
 
+EJ_BIND_FUNCTION(require, ctx, argc, argv) {
+	EJ_MIN_ARGS(argc, 1)
+	
+	JSObjectRef module = JSObjectMake(ctx, NULL, NULL);
+	JSObjectRef exports = JSObjectMake(ctx, NULL, NULL);
+	NSString *file = JSValueToNSString(ctx, argv[0]);
+	
+	return [controller loadModuleWithId:file module:module exports:exports];
+}
+
 //EJ_BIND_FUNCTION(require, ctx, argc, argv) {
 //	EJ_MIN_ARGS(argc, 1)
 //	

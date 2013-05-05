@@ -93,7 +93,8 @@ NSString *const MJSMobileJSControllerDidLoadMainFileNotification = @"MJSMobileJS
 
 - (JSValueRef)loadModuleWithId:(NSString *)moduleId module:(JSValueRef)module exports:(JSValueRef)exports {
 	NSString *path = [moduleId stringByAppendingString:@".js"];
-	NSString *script = [NSString stringWithContentsOfFile:[self pathForResource:path] encoding:NSUTF8StringEncoding error:NULL];
+	// TODO: Adding "return exports;" is a hacky way to do this. Revisit in the future.
+	NSString *script = [[NSString stringWithContentsOfFile:[self pathForResource:path] encoding:NSUTF8StringEncoding error:NULL] stringByAppendingString:@"\n\nreturn exports;"];
 	
 	if( !script ) {
 		NSLog(@"Error: Can't Find Module %@", moduleId );
