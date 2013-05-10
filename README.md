@@ -4,7 +4,7 @@ mobile.js allows you to build iOS applications using only JavaScript.
 
 Like Ejecta, mobile.js is licensed under the [MIT License](http://opensource.org/licenses/mit-license.php).
 
-** NOTE: This is very much in an alpha state. Not much has been implemented, as this is mostly in a "proof of concept" phase currently.**
+**NOTE: This is very much in an alpha state. Not much has been implemented, as this is mostly in a "proof of concept" phase currently.**
 
 ## How does this differ from PhoneGap?
 
