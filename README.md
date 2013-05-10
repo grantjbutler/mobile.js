@@ -4,6 +4,8 @@ mobile.js allows you to build iOS applications using only JavaScript.
 
 Like Ejecta, mobile.js is licensed under the [MIT License](http://opensource.org/licenses/mit-license.php).
 
+** NOTE: This is very much in an alpha state. Not much has been implemented, as this is mostly in a "proof of concept" phase currently.**
+
 ## How does this differ from PhoneGap?
 
 PhoneGap is basically a wrapper around a web browser with a couple tie-ins to the device's hardware. You are required to build the UI yourself either from scratch, or using a library such as jQuery Mobile. As a result, you don't get the performance you would normally get from a standard iOS application, nor do you get the full experience of an iOS application.
