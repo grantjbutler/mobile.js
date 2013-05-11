@@ -76,6 +76,50 @@ EJ_BIND_FUNCTION(addSection, ctx, argc, argv) {
 	return NULL;
 }
 
+EJ_BIND_FUNCTION(insertSection, ctx, argc, argv) {
+	EJ_MIN_ARGS(argc, 2)
+	
+	if(!JSValueIsObject(ctx, argv[0])) {
+		[MJSExceptionForType(MJSInvalidArgumentTypeException) raise];
+		
+		return NULL;
+	}
+	
+	if(!JSValueIsNumber(ctx, argv[1])) {
+		[MJSExceptionForType(MJSInvalidArgumentTypeException) raise];
+		
+		return NULL;
+	}
+	
+	JSObjectRef func = JSValueToObject(ctx, argv[0], NULL);
+	NSInteger index = JSValueToNumberFast(ctx, argv[1]);
+	
+	BOOL animated = YES;
+	
+	if(argc >= 3 && JSValueIsBoolean(ctx, argv[2])) {
+		animated = JSValueToBoolean(ctx, argv[2]);
+	}
+	
+	MJSTableViewSection *section = [[MJSTableViewSection alloc] initWithContext:ctx argc:0 argv:NULL];
+	JSObjectRef sectionObject = [MJSTableViewSection createJSObjectWithContext:ctx controller:controller instance:section];
+	
+	JSObjectRef args[] = {
+		sectionObject
+	};
+	
+	[controller invokeCallback:func thisObject:jsObject argc:1 argv:(JSValueRef *)args];
+	
+	[_sections insertObject:section atIndex:index];
+	
+	if(animated) {
+		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationAutomatic];
+	} else {
+		[self.tableView reloadData];
+	}
+	
+	return NULL;
+}
+
 #pragma mark - Constants
 
 EJ_BIND_STATIC_CONST(PLAIN_STYLE, UITableViewStylePlain)
