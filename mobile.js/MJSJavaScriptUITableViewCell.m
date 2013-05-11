@@ -12,6 +12,7 @@
 
 @implementation MJSJavaScriptUITableViewCell {
 	MJSJavaScriptUILabel *_textLabel;
+	MJSJavaScriptUILabel *_detailTextLabel;
 }
 
 - (void)makeBackingViewWithContext:(JSContextRef)ctxp argc:(size_t)argc argv:(const JSValueRef [])argv {
@@ -50,6 +51,16 @@ EJ_BIND_GET(textLabel, ctx) {
 	}
 	
 	return _textLabel.jsObject;
+}
+
+EJ_BIND_GET(detailTextLabel, ctx) {
+	if(!_detailTextLabel) {
+		_detailTextLabel = [[MJSJavaScriptUILabel alloc] initWithView:self.cell.detailTextLabel];
+		[MJSJavaScriptUILabel createJSObjectWithContext:ctx controller:controller instance:_detailTextLabel];
+		JSValueProtect(ctx, _detailTextLabel.jsObject);
+	}
+	
+	return _detailTextLabel.jsObject;
 }
 
 EJ_BIND_STATIC_CONST(DEFAULT_STYLE, UITableViewCellStyleDefault)
