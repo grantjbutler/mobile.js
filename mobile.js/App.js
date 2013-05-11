@@ -15,46 +15,12 @@ UI.App.addEventListener('launch', function() {
 function MainScreen() {
 	this.screen = new UI.Screen();
 	
-	this.data = [
-		{
-			id: 1,
-			name: 'John Smith'
-		},
-		{
-			id: 2,
-			name: 'Donna Noble'
-		},
-		{
-			id: 3,
-			name: 'Martha Jones'
-		},
-		{
-			id: 4,
-			name: 'Rose Tyler'
-		},
-		{
-			id: 5,
-			name: 'Amelia Pond'
-		},
-		{
-			id: 6,
-			name: 'Rory Williams'
-		},
-		{
-			id: 7,
-			name: 'Clara Oswin Oswald'
-		},
-		{
-			id: 8,
-			name: 'River Song'
-		}
-	];
-	
 	this.tableView = new UI.TableView(UI.TableView.PLAIN_STYLE);
 	this.tableView.width = this.screen.view.width;
 	this.tableView.height = this.screen.view.height;
 	this.tableView.autoresizingMask = UI.View.FLEXIBLE_HEIGHT | UI.View.FLEXIBLE_WIDTH;
 	
+/*
 	var self = this;
 	
 	this.tableView.addSection(function(section) {
@@ -66,6 +32,29 @@ function MainScreen() {
 			cell.style = UI.TableViewCell.DEFAULT_STYLE;
 		}
 	});
+*/
+	
+	UI.App.networkActivityIndicatorVisible = true;
+	
+	var self = this;
+	
+	var request = new XMLHttpRequest();
+	request.open("GET", "https://api.github.com/users/grantjbutler/repos");
+	request.responseType = 'json';
+	request.onload = function() {
+		self.tableView.insertSection(function(section) {
+			for(var i = 0; i < request.response.length; i++) {
+				var cell = section.addCell(function(cell, indexPath) {
+					cell.textLabel.text = request.response[indexPath.row].full_name;
+				});
+				cell.reuseIdentifier = "Cell";
+				cell.style = UI.TableViewCell.DEFAULT_STYLE;
+			}
+		}, 0);
+		
+		UI.App.networkActivityIndicatorVisible = false;
+	};
+	request.send();
 	
 	this.screen.view.addSubview(this.tableView);
 };
