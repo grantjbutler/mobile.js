@@ -53,6 +53,14 @@ EJ_BIND_FUNCTION(canOpenURL, ctx, argc, argv) {
 	return JSValueMakeBoolean(ctx, [[UIApplication sharedApplication] openURL:url]);
 }
 
+EJ_BIND_GET(networkActivityIndicatorVisible, ctx) {
+	return JSValueMakeBoolean(ctx, [[UIApplication sharedApplication] isNetworkActivityIndicatorVisible]);
+}
+
+EJ_BIND_SET(networkActivityIndicatorVisible, ctx, value) {
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:JSValueToBoolean(ctx, value)];
+}
+
 EJ_BIND_GET(iconBadgeNumber, ctx) {
 	return JSValueMakeNumber(ctx, [[UIApplication sharedApplication] applicationIconBadgeNumber]);
 }
